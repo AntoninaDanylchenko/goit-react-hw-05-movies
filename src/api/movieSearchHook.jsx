@@ -20,7 +20,7 @@ const useMovieSearchHook = (apiFunction, id) => {
       }
     }
     fetchToSearch();
-  }, []);
+  }, [apiFunction, id]);
   return { movieArr, error, isLoading };
 };
 
