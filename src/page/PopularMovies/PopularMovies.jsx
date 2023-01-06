@@ -5,7 +5,7 @@ const PopularMovies = ({ movies }) => {
     <ul>
       {movies.map(({ id, original_title, poster_path }) => (
         <li key={id}>
-          <Link to={`/movies/${id}`}>
+          <Link to={`/goit-react-hw-05-movies/movies/${id}`}>
             <img
               src={`https://image.tmdb.org/t/p/w500${poster_path}`}
               alt={original_title}

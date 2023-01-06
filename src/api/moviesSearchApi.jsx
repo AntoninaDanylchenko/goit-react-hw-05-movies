@@ -29,3 +29,11 @@ export const findMoviesReviews = async id => {
     )
     .then(r => r.data.results);
 };
+
+export const findMoviesByQuery = async query => {
+  return await axios
+    .get(
+      `${BACKEND}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
+    )
+    .then(r => r.data.results);
+};
