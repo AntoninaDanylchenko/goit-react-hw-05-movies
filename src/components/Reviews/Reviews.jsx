@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { findMoviesReviews } from 'api/moviesSearchApi';
 import Loader from 'components/Loader';
 import MovieReviewPage from 'page/MovieReviewPage';
-import useMovieSearchHook from 'api/movieSearchHook';
+import useMovieSearchHook from 'api/movieSearchComponent';
 
 const MoviesDetails = () => {
   const { id } = useParams();

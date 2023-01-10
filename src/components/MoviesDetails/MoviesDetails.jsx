@@ -1,11 +1,13 @@
-import { useParams, Outlet, Link } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { getMoviesById } from 'api/moviesSearchApi';
 import Loader from 'components/Loader';
 import MovieDetailPage from 'page/MovieDetailPage';
-import useMovieSearchHook from 'api/movieSearchHook';
+import useMovieSearchHook from 'api/movieSearchComponent';
 
 const MoviesDetails = () => {
   const { id } = useParams();
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
 
   const popularMovies = useMovieSearchHook(getMoviesById, id);
   const { movieArr, error, isLoading } = popularMovies;
@@ -14,10 +16,9 @@ const MoviesDetails = () => {
     <main>
       {isLoading && <Loader />}
       {error && <h2>{error}</h2>}
-      {movieArr.length !== 0 && <MovieDetailPage movie={movieArr} />}
-      <Link to={`/goit-react-hw-05-movies/movies/${id}/cast`}>Cast</Link>
-      <Link to={`/goit-react-hw-05-movies/movies/${id}/reviews`}>Reviews</Link>
-      <Outlet />
+      {movieArr.length !== 0 && (
+        <MovieDetailPage movie={movieArr} backLinkHref={backLinkHref} />
+      )}
     </main>
   );
 };

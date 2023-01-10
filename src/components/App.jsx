@@ -1,38 +1,30 @@
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import MoviesDetails from './MoviesDetails/MoviesDetails';
 import Movies from './Movies';
-// import NotFound from './NotFound';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Cast from './Cast';
 import Reviews from './Reviews';
+import Layout from './Layout/Layout';
 
 export const App = () => {
   return (
     <>
-      <header>
-        <nav>
-          <NavLink to="/goit-react-hw-05-movies/">Home</NavLink>
-          <NavLink to="/goit-react-hw-05-movies/movies">Movies</NavLink>
-        </nav>
-      </header>
+      <Layout />
       <Routes>
-        <Route path="/goit-react-hw-05-movies/" element={<Home />} />
-        <Route
-          path="/goit-react-hw-05-movies/movies/:id"
-          element={<MoviesDetails />}
-        >
+        <Route path="/" element={<Home />} />
+        <Route path="/movies/:id" element={<MoviesDetails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="/goit-react-hw-05-movies/movies" element={<Movies />} />
-        <Route
-          path="/goit-react-hw-05-movies/movies/:id"
-          element={<MoviesDetails />}
-        >
+        <Route path="/movies" element={<Movies />} />
+        <Route path=":id" element={<MoviesDetails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
       </Routes>
+      <ToastContainer />
     </>
   );
 };
