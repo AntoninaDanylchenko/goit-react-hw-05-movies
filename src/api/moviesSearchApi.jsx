@@ -6,7 +6,7 @@ const BACKEND = 'https://api.themoviedb.org/3/';
 
 export const findMovies = async () => {
   return await axios
-    .get(`${BACKEND}trending/movie/week?api_key=${API_KEY}`)
+    .get(`${BACKEND}trending/movie/day?api_key=${API_KEY}`)
     .then(r => r.data.results);
 };
 

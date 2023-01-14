@@ -11,7 +11,9 @@ const MoviesDetails = () => {
   const { movieArr, error, isLoading } = moviesActors;
   return (
     <MainContainer isLoading={isLoading} error={error} movieArr={movieArr}>
-      <MovieReviewComponent movies={movieArr} />
+      {!isLoading && movieArr.length !== 0 && (
+        <MovieReviewComponent movies={movieArr} />
+      )}
     </MainContainer>
   );
 };
