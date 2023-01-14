@@ -13,7 +13,7 @@ const MoviesGallaryComponent = ({ movies }) => {
     <PopularMovieList>
       {movies.map(({ id, original_title, poster_path }) => (
         <MovieItem key={id}>
-          <MovieLink to={`/${id}`} state={{ from: location }}>
+          <MovieLink to={`/movies/${id}`} state={{ from: location }}>
             <MovieItemImg
               src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
               alt={original_title}

@@ -15,5 +15,8 @@ export const ReviewAuthor = styled.h2`
 `;
 
 export const NoReview = styled.p`
-  padding: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  font-size: 24px;
+  font-weight: 500;
 `;
