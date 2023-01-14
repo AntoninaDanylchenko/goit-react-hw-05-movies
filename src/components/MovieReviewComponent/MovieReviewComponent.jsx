@@ -1,13 +1,20 @@
+import {
+  ReviewList,
+  ReviewItem,
+  ReviewAuthor,
+} from './MovieReviewComponent.styled';
 const MovieReviewComponent = ({ movies }) => {
-  return (
-    <ul>
+  return movies.length !== 0 ? (
+    <ReviewList>
       {movies.map(({ id, author, content }) => (
-        <li key={id}>
-          <h2>{author}</h2>
+        <ReviewItem key={id}>
+          <ReviewAuthor>{author}</ReviewAuthor>
           <p>{content}</p>
-        </li>
+        </ReviewItem>
       ))}
-    </ul>
+    </ReviewList>
+  ) : (
+    <p> There are no reviews for this film.</p>
   );
 };
 export default MovieReviewComponent;
