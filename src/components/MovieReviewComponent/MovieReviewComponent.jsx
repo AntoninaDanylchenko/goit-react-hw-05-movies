@@ -1,4 +1,4 @@
-const MovieReviewPage = ({ movies }) => {
+const MovieReviewComponent = ({ movies }) => {
   return (
     <ul>
       {movies.map(({ id, author, content }) => (
@@ -10,4 +10,4 @@ const MovieReviewPage = ({ movies }) => {
     </ul>
   );
 };
-export default MovieReviewPage;
+export default MovieReviewComponent;

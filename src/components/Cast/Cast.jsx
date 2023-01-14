@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { findMoviesActors } from 'api/moviesSearchApi';
-import Loader from 'components/Loader';
-import MovieActorsPage from 'page/MovieActorsPage';
+import MovieActorsComponent from 'components/MovieActorsComponent';
 import useMovieSearchHook from 'api/movieSearchComponent';
+import MainContainer from 'components/MainContainer';
 
 const MoviesDetails = () => {
   const { id } = useParams();
@@ -10,11 +10,9 @@ const MoviesDetails = () => {
   const moviesActors = useMovieSearchHook(findMoviesActors, id);
   const { movieArr, error, isLoading } = moviesActors;
   return (
-    <>
-      {isLoading && <Loader />}
-      {error && <h2>{error}</h2>}
-      {movieArr.length !== 0 && <MovieActorsPage movies={movieArr} />}
-    </>
+    <MainContainer isLoading={isLoading} error={error} movieArr={movieArr}>
+      {movieArr.length !== 0 && <MovieActorsComponent movies={movieArr} />}
+    </MainContainer>
   );
 };
 

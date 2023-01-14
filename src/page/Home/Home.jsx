@@ -1,0 +1,18 @@
+import { findMovies } from 'api/moviesSearchApi';
+import MoviesGallaryComponent from 'components/MoviesGallaryComponent';
+import MainContainer from 'components/MainContainer';
+import useMovieSearchHook from 'api/movieSearchComponent';
+
+const Home = () => {
+  const popularMovies = useMovieSearchHook(findMovies);
+  const { movieArr, error, isLoading } = popularMovies;
+
+  return (
+    <main>
+      <MainContainer isLoading={isLoading} error={error} movieArr={movieArr}>
+        {movieArr.length !== 0 && <MoviesGallaryComponent movies={movieArr} />}
+      </MainContainer>
+    </main>
+  );
+};
+export default Home;

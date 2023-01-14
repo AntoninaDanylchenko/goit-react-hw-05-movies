@@ -4,7 +4,7 @@ import { ImSearch } from 'react-icons/im';
 import { toast } from 'react-toastify';
 import { findMoviesByQuery } from '../../api/moviesSearchApi';
 import Loader from 'components/Loader';
-import PopularMovies from 'page/PopularMovies';
+import MoviesGallaryComponent from 'components/MoviesGallaryComponent';
 import {
   SearchbarContainer,
   SearchForm,
@@ -51,30 +51,28 @@ const Movies = () => {
     setSearchParams(nextParams);
   };
   return (
-    <>
-      <main>
-        <SearchbarContainer>
-          <SearchForm onSubmit={searchSubmit}>
-            <SearchFormInput
-              type="text"
-              autoComplete="off"
-              autoFocus
-              placeholder="Search film"
-              onChange={e => updateQueryString(e.target.value)}
-              value={query}
-            />
+    <main>
+      <SearchbarContainer>
+        <SearchForm onSubmit={searchSubmit}>
+          <SearchFormInput
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search film"
+            onChange={e => updateQueryString(e.target.value)}
+            value={query}
+          />
 
-            <SearchFormButton type="submit">
-              <ImSearch />
-            </SearchFormButton>
-          </SearchForm>
-        </SearchbarContainer>
+          <SearchFormButton type="submit">
+            <ImSearch />
+          </SearchFormButton>
+        </SearchForm>
+      </SearchbarContainer>
 
-        {isLoading && <Loader />}
-        {error && <h2>{error}</h2>}
-        {movieArr.length !== 0 && <PopularMovies movies={movieArr} />}
-      </main>
-    </>
+      {isLoading && <Loader />}
+      {error && <h2>{error}</h2>}
+      {movieArr.length !== 0 && <MoviesGallaryComponent movies={movieArr} />}
+    </main>
   );
 };
 

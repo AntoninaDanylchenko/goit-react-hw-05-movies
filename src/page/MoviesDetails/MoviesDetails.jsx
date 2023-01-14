@@ -1,7 +1,7 @@
 import { useParams, useLocation } from 'react-router-dom';
 import { getMoviesById } from 'api/moviesSearchApi';
-import Loader from 'components/Loader';
-import MovieDetailPage from 'page/MovieDetailPage';
+import MainContainer from 'components/MainContainer';
+import MovieDetailComponent from 'components/MovieDetailComponent';
 import useMovieSearchHook from 'api/movieSearchComponent';
 
 const MoviesDetails = () => {
@@ -14,11 +14,11 @@ const MoviesDetails = () => {
 
   return (
     <main>
-      {isLoading && <Loader />}
-      {error && <h2>{error}</h2>}
-      {movieArr.length !== 0 && (
-        <MovieDetailPage movie={movieArr} backLinkHref={backLinkHref} />
-      )}
+      <MainContainer isLoading={isLoading} error={error} movieArr={movieArr}>
+        {movieArr.length !== 0 && (
+          <MovieDetailComponent movies={movieArr} backLinkHref={backLinkHref} />
+        )}
+      </MainContainer>
     </main>
   );
 };
